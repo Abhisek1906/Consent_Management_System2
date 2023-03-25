@@ -22,5 +22,7 @@ public interface HospitalPatientService {
 
     Status getStatusOfConsentRequest(ConsentRequest consentRequest);
 
+    List<HospitalPatient> getAllPatients(int doctorId);
+
     // generateConsentRequest(int patientId, int hospitalId, int doctorId);
 }

@@ -71,5 +71,10 @@ public class HospitalPatientServiceImpl implements HospitalPatientService{
         return patientClient.checkStatus(consentRequest.getConsentId());
     }
 
+    @Override
+    public List<HospitalPatient> getAllPatients(int doctorId) {
+        return doctorRepository.findDoctorByDoctorId(doctorId).getHospitalPatientList();
+    }
+
 
 }

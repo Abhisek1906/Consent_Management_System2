@@ -42,6 +42,6 @@ public class Doctor {
             }
     )
     @JsonManagedReference
-    private Set<HospitalPatient> hospitalPatientSet;
+    private List<HospitalPatient> hospitalPatientList;
 
 }

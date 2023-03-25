@@ -65,4 +65,12 @@ public class kimsController {
        return ResponseEntity.ok(getApproval);
    }
 
+   @GetMapping("/getAllPatients/{doctorId}")
+    public ResponseEntity<List<HospitalPatient>> getAllPatientsForADoctor(@PathVariable("doctorId") int doctorId){
+        List<HospitalPatient> patientList=hospitalPatientService.getAllPatients(doctorId);
+        if(patientList.isEmpty())
+            return ResponseEntity.status(400).body(null);
+        return ResponseEntity.ok().body(patientList);
+   }
+
 }

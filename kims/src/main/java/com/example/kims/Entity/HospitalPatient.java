@@ -28,7 +28,7 @@ public class HospitalPatient {
     private List<EHR> ehrList;
 
 
-    @ManyToMany(mappedBy = "hospitalPatientSet",fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "hospitalPatientList",fetch = FetchType.LAZY)
     @JsonBackReference
     private Set<Doctor> doctors;
 
