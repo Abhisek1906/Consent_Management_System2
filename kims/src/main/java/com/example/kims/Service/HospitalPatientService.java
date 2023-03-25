@@ -3,6 +3,7 @@ package com.example.kims.Service;
 import com.example.kims.Entity.ConsentRequest;
 import com.example.kims.Entity.EHR;
 import com.example.kims.Entity.HospitalPatient;
+import com.example.kims.Entity.Status;
 //import org.springframework.cloud.openfeign.FeignClient;
 import java.util.List;
 
@@ -18,6 +19,8 @@ public interface HospitalPatientService {
     List<EHR> getConsentResponse(int hospitalId, int patientId);
 
     String generateNotificationInPatient(ConsentRequest consentRequest);
+
+    Status getStatusOfConsentRequest(ConsentRequest consentRequest);
 
     // generateConsentRequest(int patientId, int hospitalId, int doctorId);
 }

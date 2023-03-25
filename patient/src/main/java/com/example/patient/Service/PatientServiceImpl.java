@@ -2,6 +2,7 @@ package com.example.patient.Service;
 
 import com.example.patient.Entity.Notification;
 import com.example.patient.Entity.Patient;
+import com.example.patient.Entity.Status;
 import com.example.patient.Repository.NotificationRepository;
 import com.example.patient.Repository.PatientRepository;
 import com.example.patient.Response.EhrResponse;
@@ -46,6 +47,12 @@ private GetEHRfeign ehrList;
         if(notification1==null)
             return "Unable to send notification";
         return "Notification send successfully";
+    }
+
+    @Override
+    public Status checkStatusofNotification(int consentId) {
+        Notification notification=notificationRepository.getNotificationByConsentId(consentId);
+        return notification.getStatus();
     }
 
 

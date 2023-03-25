@@ -3,6 +3,7 @@ package com.example.kims.Service;
 import com.example.kims.Entity.ConsentRequest;
 import com.example.kims.Entity.EHR;
 import com.example.kims.Entity.HospitalPatient;
+import com.example.kims.Entity.Status;
 import com.example.kims.Repository.DoctorRepository;
 import com.example.kims.Repository.EhrRepository;
 import com.example.kims.Repository.HospitalPatientRepository;
@@ -63,6 +64,11 @@ public class HospitalPatientServiceImpl implements HospitalPatientService{
         return patientClient.generateNotification(consentRequest.getHospitalId(),
                 consentRequest.getDoctorId(),consentRequest.getMessage(),consentRequest.getStatus(),
                 consentRequest.getIsEmergency());
+    }
+
+    @Override
+    public Status getStatusOfConsentRequest(ConsentRequest consentRequest) {
+        return patientClient.checkStatus(consentRequest.getConsentId());
     }
 
 

@@ -63,4 +63,10 @@ public class PatientController {
         String sendNotification=patientService.sendNotification(notification);
         return ResponseEntity.ok(sendNotification);
     }
+
+    @GetMapping("/checkStatus/{consentId}")
+    public ResponseEntity<Status> checkStatusOfNotification(@PathVariable int consentId){
+        Status currentStatus= patientService.checkStatusofNotification(consentId);
+        return ResponseEntity.ok(currentStatus);
+    }
 }

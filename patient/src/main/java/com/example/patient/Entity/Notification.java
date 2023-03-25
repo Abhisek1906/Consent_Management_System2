@@ -16,6 +16,7 @@ public class Notification {
     private int notificationId;
     private int fromHospitalId;
 
+    private int consentId;
     private int fromDoctorId;
     private String message;
     private Status status;
