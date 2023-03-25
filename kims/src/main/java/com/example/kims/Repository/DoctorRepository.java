@@ -1,0 +1,9 @@
+package com.example.kims.Repository;
+
+import com.example.kims.Entity.Doctor;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface DoctorRepository extends JpaRepository<Doctor, Integer> {
+
+    Doctor findDoctorByDoctorId(int id);
+}

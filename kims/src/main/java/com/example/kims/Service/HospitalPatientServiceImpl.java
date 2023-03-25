@@ -1,7 +1,9 @@
 package com.example.kims.Service;
 
+import com.example.kims.Entity.ConsentRequest;
 import com.example.kims.Entity.EHR;
 import com.example.kims.Entity.HospitalPatient;
+import com.example.kims.Repository.DoctorRepository;
 import com.example.kims.Repository.EhrRepository;
 import com.example.kims.Repository.HospitalPatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +17,18 @@ public class HospitalPatientServiceImpl implements HospitalPatientService{
     private HospitalPatientRepository hospitalPatientRepository;
 
     @Autowired
+    private DoctorRepository doctorRepository;
+
+    @Autowired
     private EhrRepository ehrRepository;
+
+    @Autowired
+    private CMS_Client cmsClient;
+
+    @Autowired
+    private PatientClient patientClient;
+
+
     @Override
     public boolean addPatient(HospitalPatient hospitalPatient) {
         HospitalPatient temp=hospitalPatientRepository.save(hospitalPatient);
@@ -39,4 +52,18 @@ public class HospitalPatientServiceImpl implements HospitalPatientService{
                 .get()
                 .getEhrList();
     }
+
+    @Override
+    public List<EHR> getConsentResponse(int hospitalId, int patientId) {
+        return cmsClient.getEhrResponse(hospitalId,patientId);
+    }
+
+    @Override
+    public String generateNotificationInPatient(ConsentRequest consentRequest) {
+        return patientClient.generateNotification(consentRequest.getHospitalId(),
+                consentRequest.getDoctorId(),consentRequest.getMessage(),consentRequest.getStatus(),
+                consentRequest.getIsEmergency());
+    }
+
+
 }

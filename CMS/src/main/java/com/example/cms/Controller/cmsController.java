@@ -14,23 +14,30 @@ import java.util.List;
 @RequestMapping("/cms")
 public class cmsController {
     @Autowired
-    private cmsService map;
+    private cmsService mappingService;
 
     @GetMapping("/getEHR/{abhaId}")
     public ResponseEntity<List<EhrResponse>> getEHR(@PathVariable("abhaId") int Id)
         {
             System.out.println("abhaId  :"+Id);
-            List<EhrResponse> temp=map.getEHR(Id);
+            List<EhrResponse> temp=mappingService.getEHR(Id);
             return ResponseEntity.ok(temp);
         }
     @PostMapping("/addMapping")
     public ResponseEntity<?> addMapping(@RequestBody Mapping mapping){
         System.out.println(mapping.toString());
-        if(map.addMapping(mapping))
+        if(mappingService.addMapping(mapping))
         {
             return ResponseEntity.ok("Success");
         }
         return ResponseEntity.status(400).body("Failed to Add Patient");
+    }
+
+    @GetMapping("/getConsentResponse")
+    public ResponseEntity<List<EhrResponse>> getConsentResponse(int hospitalId,int patientId){
+        List<EhrResponse> responses=mappingService.getConsentResponse(hospitalId,patientId);
+
+        return ResponseEntity.ok(responses);
     }
 
 }

@@ -12,4 +12,7 @@ public interface MappingRepository extends JpaRepository<Mapping,Integer> {
 
     //@Query(value = "SELECT * from mapping m WHERE m.abhaId=",nativeQuery = true)
     List<Mapping> findByAbhaId(int Id);
+
+    int findMappingByPatientIdAndHospitalId(int hospitalId,int patientId);
+
 }

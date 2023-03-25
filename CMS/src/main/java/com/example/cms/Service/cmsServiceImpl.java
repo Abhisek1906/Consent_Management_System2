@@ -44,4 +44,16 @@ public class cmsServiceImpl implements cmsService {
             return false;
         return true;
     }
+
+    @Override
+    public List<EhrResponse> getConsentResponse(int hospitalId, int patientId) {
+        int AbhaId=fetchAbhaId(hospitalId,patientId);
+        List<EhrResponse> ehrResponseList=getEHR(AbhaId);
+        return ehrResponseList;
+    }
+
+    private int fetchAbhaId(int hospitalId,int patientId){
+        int getAbhaId=mappingRepo.findMappingByPatientIdAndHospitalId(hospitalId,patientId);
+        return getAbhaId;
+    }
 }

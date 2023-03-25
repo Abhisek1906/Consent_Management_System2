@@ -8,4 +8,6 @@ import java.util.List;
 public interface cmsService {
     List<EhrResponse> getEHR(int Id);
     boolean addMapping(Mapping map);
+
+    List<EhrResponse> getConsentResponse(int hospitalId, int patientId);
 }

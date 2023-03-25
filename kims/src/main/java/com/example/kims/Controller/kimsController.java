@@ -1,9 +1,11 @@
 package com.example.kims.Controller;
 
 
+import com.example.kims.Entity.ConsentRequest;
 import com.example.kims.Entity.EHR;
 import com.example.kims.Entity.HospitalPatient;
 import com.example.kims.Service.HospitalPatientService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -43,5 +45,14 @@ public class kimsController {
             return ResponseEntity.status(400).body(null);
         return  ResponseEntity.ok().body(ehrs);
     }
+
+   @GetMapping("/getConsentResponse")
+    public ResponseEntity<List<EHR>>  getConsentResponse(@RequestBody ConsentRequest consentRequest){
+        String getApproval=hospitalPatientService.generateNotificationInPatient(consentRequest);
+        List<EHR> responseEHRs=hospitalPatientService.getConsentResponse(consentRequest.getHospitalId(),consentRequest.getPatientId());
+        if(responseEHRs.isEmpty())
+            return ResponseEntity.status(400).body(null);
+        return ResponseEntity.ok().body(responseEHRs);
+   }
 
 }

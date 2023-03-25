@@ -1,10 +1,12 @@
 package com.example.kims.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.List;
+import java.util.Set;
 
 
 @Entity
@@ -24,5 +26,10 @@ public class HospitalPatient {
     @OneToMany(mappedBy = "patient")
     @JsonManagedReference
     private List<EHR> ehrList;
+
+
+    @ManyToMany(mappedBy = "hospitalPatientSet",fetch = FetchType.LAZY)
+    @JsonBackReference
+    private Set<Doctor> doctors;
 
 }

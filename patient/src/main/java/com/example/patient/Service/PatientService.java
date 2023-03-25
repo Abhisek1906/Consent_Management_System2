@@ -1,5 +1,6 @@
 package com.example.patient.Service;
 
+import com.example.patient.Entity.Notification;
 import com.example.patient.Entity.Patient;
 import com.example.patient.Response.EhrResponse;
 
@@ -9,4 +10,6 @@ public interface PatientService {
     boolean  addPatient(Patient patient);
     Patient getPatientInfo(int id);
     List<EhrResponse> getEhr(int abhaId);
+
+    String sendNotification(Notification notification);
 }

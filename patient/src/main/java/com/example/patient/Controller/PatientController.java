@@ -1,6 +1,8 @@
 package com.example.patient.Controller;
 
+import com.example.patient.Entity.Notification;
 import com.example.patient.Entity.Patient;
+import com.example.patient.Entity.Status;
 import com.example.patient.Request.LoginRequest;
 import com.example.patient.Response.AuthenticationResponse;
 import com.example.patient.Response.EhrResponse;
@@ -47,5 +49,18 @@ public class PatientController {
             return ResponseEntity.ok("Success");
         }
         return ResponseEntity.status(400).body("Failed to Add Patient");
+    }
+
+    @PostMapping("/generateNotification")
+    public ResponseEntity<String> generateNotification(int hospitalId, int doctorId, String message, Status status, String isEmergency){
+        Notification notification=new Notification();
+        notification.setFromHospitalId(hospitalId);
+        notification.setFromDoctorId(doctorId);
+        notification.setMessage(message);
+        notification.setStatus(status);
+        notification.setIsEmergency(isEmergency);
+
+        String sendNotification=patientService.sendNotification(notification);
+        return ResponseEntity.ok(sendNotification);
     }
 }
