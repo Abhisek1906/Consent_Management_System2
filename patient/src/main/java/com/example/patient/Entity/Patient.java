@@ -1,5 +1,6 @@
 package com.example.patient.Entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,6 +11,7 @@ import org.springframework.boot.autoconfigure.security.servlet.UserDetailsServic
 //import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name="patient")
@@ -40,6 +42,12 @@ public class Patient{
     @Column(name="age")
     private int age;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    private Nominee nominee;
+
+    @OneToMany(mappedBy = "patient")
+    @JsonManagedReference
+    private List<Notification> notificationListList;
 
 
 }

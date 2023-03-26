@@ -81,4 +81,6 @@ public class PatientController {
         Status status= patientService.rejectNotification(notificationId);
         return ResponseEntity.ok(status);
     }
+
+
 }
