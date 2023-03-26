@@ -69,4 +69,16 @@ public class PatientController {
         Status currentStatus= patientService.checkStatusofNotification(consentId);
         return ResponseEntity.ok(currentStatus);
     }
+
+    @PostMapping("/approveConsentRequest/{notificationId}")
+    public ResponseEntity<Status> approveConsentRequest(@PathVariable("notificationId") int notificationId){
+        Status status= patientService.approveNotification(notificationId);
+        return ResponseEntity.ok(status);
+    }
+
+    @PostMapping("/rejectConsentRequest/{notificationId}")
+    public ResponseEntity<Status> rejectConsentRequest(@PathVariable("notificationId") int notificationId){
+        Status status= patientService.rejectNotification(notificationId);
+        return ResponseEntity.ok(status);
+    }
 }

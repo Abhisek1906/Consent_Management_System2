@@ -8,9 +8,7 @@ import com.example.patient.Repository.PatientRepository;
 import com.example.patient.Response.EhrResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -52,6 +50,20 @@ private GetEHRfeign ehrList;
     @Override
     public Status checkStatusofNotification(int consentId) {
         Notification notification=notificationRepository.getNotificationByConsentId(consentId);
+        return notification.getStatus();
+    }
+
+    @Override
+    public Status approveNotification(int notificationId) {
+        Notification notification=notificationRepository.getNotificationByNotificationId(notificationId);
+        notification.setStatus(Status.APPROVE);
+        return notification.getStatus();
+    }
+
+    @Override
+    public Status rejectNotification(int notificationId) {
+        Notification notification=notificationRepository.getNotificationByNotificationId(notificationId);
+        notification.setStatus(Status.REJECT);
         return notification.getStatus();
     }
 

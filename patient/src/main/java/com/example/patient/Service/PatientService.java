@@ -15,4 +15,8 @@ public interface PatientService {
     String sendNotification(Notification notification);
 
     Status checkStatusofNotification(int consentId);
+
+    Status approveNotification(int notificationId);
+
+    Status rejectNotification(int notificationId);
 }

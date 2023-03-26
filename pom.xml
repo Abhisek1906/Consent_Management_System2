@@ -16,6 +16,7 @@
     <module>patient</module>
     <module>CMS</module>
     <module>kims</module>
+    <module>ServiceRegistry</module>
 
   </modules>
 
