@@ -11,6 +11,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="CMS" />
+        <module name="ServiceRegistry" />
         <module name="patient" />
         <module name="kims" />
       </profile>
@@ -22,6 +23,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="CMS" options="" />
+      <module name="ServiceRegistry" options="-parameters" />
       <module name="demo" options="-parameters" />
       <module name="kims" options="" />
       <module name="patient" options="" />
