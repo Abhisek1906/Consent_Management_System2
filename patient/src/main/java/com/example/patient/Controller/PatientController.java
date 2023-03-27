@@ -7,7 +7,6 @@ import com.example.patient.Request.LoginRequest;
 import com.example.patient.Response.AuthenticationResponse;
 import com.example.patient.Response.EhrResponse;
 import com.example.patient.Service.PatientService;
-import org.aspectj.weaver.ast.Not;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

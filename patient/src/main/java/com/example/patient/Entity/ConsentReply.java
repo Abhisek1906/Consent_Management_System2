@@ -22,5 +22,5 @@ public class ConsentReply {
 
     private int toDoctorId;
     private int toHospitalId;
-    private List<EhrResponse> ehrResponseList;
+    //private List<EhrResponse> ehrResponseList;
 }

@@ -9,7 +9,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class EhrResponse{
+public class EhrResponse {
     private int ehrId;
 
     private String hospitalName;

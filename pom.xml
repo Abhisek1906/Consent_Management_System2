@@ -17,6 +17,7 @@
     <module>CMS</module>
     <module>kims</module>
     <module>ServiceRegistry</module>
+    <module>Client</module>
 
   </modules>
 
