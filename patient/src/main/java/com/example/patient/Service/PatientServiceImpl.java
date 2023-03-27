@@ -67,5 +67,11 @@ private GetEHRfeign ehrList;
         return notification.getStatus();
     }
 
+    @Override
+    public List<Notification> getAllNotifications(Patient patient) {
+        List<Notification> notificationList=notificationRepository.getNotificationsByPatient(patient);
+        return notificationList;
+    }
+
 
 }

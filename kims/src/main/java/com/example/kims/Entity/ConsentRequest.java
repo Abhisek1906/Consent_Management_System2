@@ -18,7 +18,6 @@ public class ConsentRequest {
     private int consentId;
 
     private int hospitalId;
-    private int doctorId;
     private int patientId;
     private String message;
     @Enumerated(EnumType.STRING)

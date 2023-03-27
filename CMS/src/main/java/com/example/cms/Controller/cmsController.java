@@ -33,8 +33,8 @@ public class cmsController {
         return ResponseEntity.status(400).body("Failed to Add Patient");
     }
 
-    @GetMapping("/getConsentResponse")
-    public ResponseEntity<List<EhrResponse>> getConsentResponse(int hospitalId,int patientId){
+    @GetMapping("/getConsentResponse/{hospitalId}/{patientId}")
+    public ResponseEntity<List<EhrResponse>> getConsentResponse(@PathVariable("hospitalId") int hospitalId,@PathVariable("patientId") int patientId){
         List<EhrResponse> responses=mappingService.getConsentResponse(hospitalId,patientId);
 
         return ResponseEntity.ok(responses);

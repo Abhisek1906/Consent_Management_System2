@@ -38,7 +38,7 @@ public class Doctor {
                     @JoinColumn(name = "doctorId", referencedColumnName = "doctorId")
             },
             inverseJoinColumns = {
-                    @JoinColumn(name = "patientId", referencedColumnName = "patientId")
+                    @JoinColumn(name = "patient_Id", referencedColumnName = "patient_Id")
             }
     )
     @JsonManagedReference

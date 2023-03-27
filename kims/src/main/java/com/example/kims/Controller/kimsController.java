@@ -59,7 +59,7 @@ public class kimsController {
        return ResponseEntity.status(400).body(null);
    }
 
-   @PostMapping("/generateNotification")
+   @PostMapping("/generateConsentRequest")
     public ResponseEntity<String> generateNotification(@RequestBody ConsentRequest consentRequest){
        String getApproval=hospitalPatientService.generateNotificationInPatient(consentRequest);
        return ResponseEntity.ok(getApproval);

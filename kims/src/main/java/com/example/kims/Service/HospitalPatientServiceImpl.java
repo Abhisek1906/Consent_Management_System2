@@ -62,7 +62,7 @@ public class HospitalPatientServiceImpl implements HospitalPatientService{
     @Override
     public String generateNotificationInPatient(ConsentRequest consentRequest) {
         return patientClient.generateNotification(consentRequest.getHospitalId(),
-                consentRequest.getDoctorId(),consentRequest.getMessage(),consentRequest.getStatus(),
+                consentRequest.getDoctor().getDoctorId(),consentRequest.getMessage(),consentRequest.getStatus(),
                 consentRequest.getIsEmergency());
     }
 

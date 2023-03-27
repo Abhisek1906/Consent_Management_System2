@@ -7,6 +7,7 @@ import com.example.patient.Request.LoginRequest;
 import com.example.patient.Response.AuthenticationResponse;
 import com.example.patient.Response.EhrResponse;
 import com.example.patient.Service.PatientService;
+import org.aspectj.weaver.ast.Not;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -51,8 +52,12 @@ public class PatientController {
         return ResponseEntity.status(400).body("Failed to Add Patient");
     }
 
-    @PostMapping("/generateNotification")
-    public ResponseEntity<String> generateNotification(int hospitalId, int doctorId, String message, Status status, String isEmergency){
+    @PostMapping("/generateNotification/{hospitalId}/{doctorId}/{message}/{status}/{isEmergency}")
+    public ResponseEntity<String> generateNotification(@PathVariable("hospitalId") int hospitalId,
+                                                       @PathVariable("doctorId") int doctorId,
+                                                       @PathVariable("message")String message,
+                                                       @PathVariable("status")Status status,
+                                                       @PathVariable("isEmergency")String isEmergency){
         Notification notification=new Notification();
         notification.setFromHospitalId(hospitalId);
         notification.setFromDoctorId(doctorId);
@@ -82,5 +87,12 @@ public class PatientController {
         return ResponseEntity.ok(status);
     }
 
+    @GetMapping("/getAllNotifications")
+    public ResponseEntity<List<Notification>> getAllNotifications(@RequestBody Patient patient){
+        List<Notification> notificationList=patientService.getAllNotifications(patient);
+        if(notificationList.isEmpty())
+            return ResponseEntity.status(400).body(null);
 
+        return ResponseEntity.ok(notificationList);
+    }
 }

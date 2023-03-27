@@ -19,4 +19,6 @@ public interface PatientService {
     Status approveNotification(int notificationId);
 
     Status rejectNotification(int notificationId);
+
+    List<Notification> getAllNotifications(Patient patient);
 }

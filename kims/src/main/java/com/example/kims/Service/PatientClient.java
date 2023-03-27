@@ -9,10 +9,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 @FeignClient(name = "patient",url = "http://localhost:7070/v1/patient")
 public interface PatientClient {
 
-    @PostMapping("/generateNotification")
-    String generateNotification(int hospitalId, int doctorId, String message, Status status, String isEmergency);
+    @PostMapping("/generateNotification/{hospitalId}/{doctorId}/{message}/{status}/{isEmergency}")
+    String generateNotification(@PathVariable("hospitalId") int hospitalId,
+                                @PathVariable("doctorId") int doctorId,
+                                @PathVariable("message")String message,
+                                @PathVariable("status")Status status,
+                                @PathVariable("isEmergency")String isEmergency);
 
 
     @GetMapping("/checkStatus/{consentId}")
-    Status checkStatus(@PathVariable int consentId);
+    Status checkStatus(@PathVariable("consentId") int consentId);
 }
