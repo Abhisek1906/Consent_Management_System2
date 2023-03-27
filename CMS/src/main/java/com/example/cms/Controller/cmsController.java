@@ -38,6 +38,7 @@ public class cmsController {
         List<EhrResponse> responses=mappingService.getConsentResponse(hospitalId,patientId);
 
         return ResponseEntity.ok(responses);
+
     }
 
 }
