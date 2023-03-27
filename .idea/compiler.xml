@@ -27,8 +27,8 @@
       <module name="Client" options="-parameters" />
       <module name="ServiceRegistry" options="-parameters" />
       <module name="demo" options="-parameters" />
-      <module name="kims" options="" />
-      <module name="patient" options="" />
+      <module name="kims" options="-parameters" />
+      <module name="patient" options="-parameters" />
     </option>
   </component>
 </project>

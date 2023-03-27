@@ -1,9 +1,9 @@
 server:
-  port: 9090
+  port: 7070
 
 spring:
   application:
-    name: Hospital-SERVICE
+    name: Patient-SERVICE
 
 eureka:
   client:
