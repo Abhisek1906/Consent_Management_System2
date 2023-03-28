@@ -18,8 +18,8 @@ public class PatientServiceImpl implements PatientService{
 
     @Autowired
     private NotificationRepository notificationRepository;
-@Autowired
-private GetEHRfeign ehrList;
+    @Autowired
+    private GetEHRfeign ehrList;
     @Override
     public boolean addPatient(Patient patient){
         Patient temp=patientRepository.save(patient);

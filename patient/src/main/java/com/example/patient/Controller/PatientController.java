@@ -77,6 +77,7 @@ public class PatientController {
     @PostMapping("/approveConsentRequest/{notificationId}")
     public ResponseEntity<Status> approveConsentRequest(@PathVariable("notificationId") int notificationId){
         Status status= patientService.approveNotification(notificationId);
+
         return ResponseEntity.ok(status);
     }
 

@@ -18,7 +18,7 @@
     <module>kims</module>
     <module>ServiceRegistry</module>
     <module>Client</module>
-
+    <module>ApiGateway</module>
   </modules>
 
 <!--  <properties>-->
