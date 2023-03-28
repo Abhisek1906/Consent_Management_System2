@@ -1,0 +1,33 @@
+server:
+  port: 8084
+spring:
+  application:
+    name: API-GATEWAY
+
+  cloud:
+    gateway:
+      routes:
+        - id: CMS-SERVICE
+          uri: lb://CMS-SERVICE
+          predicates:
+            - Path=/cms/**
+
+        - id: PATIENT-SERVICE
+          uri: lb://PATIENT-SERVICE
+          predicates:
+            - Path=/v1/patient/**
+
+        - id: HOSPITAL-SERVICE
+          uri: lb://HOSPITAL-SERVICE
+          predicates:
+            - Path=/kims/**
+
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
